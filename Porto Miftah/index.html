@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miftah Fakhriansyah Profile</title>
+<link href="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<link href="Asset/Css/stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="Content">
+		<div class="short-profile">
+			<div class="avatar">
+			<img src="images/IMG-20200326-WA0050.jpg" alt="profile">
+			</div>
+			<div class="about-me">
+			<h1>Miftah Fakhriansyah</h1>
+			<p> Mechanical Engineering
+				<br>
+				I'am undergraduate student in 
+				<a target="_blank" href="https://www.undip.ac.id/"> Diponegoro University </a>
+				and now I'm in the internship period at <a target="_blank" href="https://dharma-tools.com/">PT Dharma Precision Tools</a></p>
+			</div>
+		</div>
+		<div class="Contact-menu">
+			<button onClick="handleClick (event, 'Contac-links')" class>Contac me</button>
+			<button onClick="handleClick(event, 'Contact-porto')" class="active">Portofolio</button>
+		</div>
+		<div class="Contact-components" style="height: 498px;">
+			<div class="contac-links" style="height: 498px;"><a target="_blank" href="https://www.linkedin.com/in/miftah-fakhriansyah-6b630b165/"> <em class="bxl-linkedin-square"> ::before </em> <span> Linkedin </span> ::after </a> <a target="_blank" href="#"> <em class="bx bxl-instagram-alt"> ::before </em> <span> Instagram </span> ::after </a> <a target="_blank" href="https://api.whatsapp.com/send?phone=6287775382552&amp;text=Miftahhhh"> <em class="bx bxs-paper-plane bx-tada"> ::before </em> <span> WhatsApp </span> ::after </a> <a target="_blank" href="https://twitter.com/fakhriansyahm"> <em class="bx bxl-twitter"> ::before </em> <span> Twitter </span> ::after </a></div>
+		</div>
+	</div>
+	<script>
+		const user = document.querySelector(".short-profile");
+		const menu = document.querySelector(".Contact-menu");
+		const components = document.querySelector(".Contact-components");
+		const links = document.querySelector(".Contact-components .contact-contac-links");
+		window.addEventListener("load", function (event) { 
+			const vh = window.innerHeight * 0.01; 
+			document.documentElement.style.setProperty("--vh",`${vh}px`);
+			
+			setTimeout(function(){
+				window.scrollTo(0,1);
+			},0);
+			const h =
+				  window.innerHeight - menu.clientHeight - user.clientHeight;
+			components.style.height = `${h}px`;
+			links.style.height = `${h}px`;
+			});
+		function handleClick(evt, name) {
+			const items = document.querySelectorAll(".Contact-menu button");
+			const el = evt.target;
+			items.forEach((items) => {
+				items.classList.add("active");
+			});
+			el.classList.add("active");
+			const elScroll = document.querySelector(`.${name}`);
+			components.scrollTo(elScroll.offsetLeft,0);
+		}
+		
+		components.addEventListener("scroll", (evt) => {
+			if (
+				evt.target.scrollLeft > window.innerWidth / 2 &&
+				evt.target.scrollLeft <
+										window.innerWidth + window.innerWidth / 2
+			) {
+				menu.querySelector("button:nth-child(1)").classList.remove(
+					"active",
+				);
+				menu.querySelector("button:nth-child(2)").classList.add(
+					"active",
+				);
+				menu.querySelector("button:nth-child(3)").classList.remove(
+					"active",
+				);
+			} else if (
+				evt.target.scrollLeft > window.innerWidth + window.innerWidth / 2
+			) {
+				menu.querySelector("button:nth-child(2)").classList.remove(
+					"active",
+				);
+				menu.querySelector("button:nth-child(3)").classList.add(
+					"active",
+				);
+			}
+		});
+	</script>
+</body>
+</html>
